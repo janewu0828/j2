@@ -22,9 +22,9 @@
     <feature name="http://tizen.org/api/application" required="true"/>
     <feature name="http://tizen.org/api/application.launch" required="true"/>
     <feature id="blackberry.media.camera" />
-    <rim:permissions>
-        <rim:permit>use_camera</rim:permit>
-    </rim:permissions>
+    <!-- <rim:permissions> -->
+        <!-- <rim:permit>use_camera</rim:permit> -->
+    <!-- </rim:permissions> -->
 
     <!-- Notification -->
     <plugin name="Notification" value="org.apache.cordova.Notification"/>
