@@ -7,8 +7,75 @@
 <link href="../jquery-mobile/jquery.mobile.structure-1.0.min.css" rel="stylesheet" type="text/css"/>
 <script src="../jquery-mobile/jquery-1.6.4.min.js" type="text/javascript"></script>
 <script src="../jquery-mobile/jquery.mobile-1.0.min.js" type="text/javascript"></script>
+
+<script language="javascript">		
+	var Data=function(title, description, content){
+		this.title=title;
+		this.description=description;
+		this.content=content;
+		
+		this.getTitle=function(){return this.title;}
+		this.getDescript=function(){return this.description;}
+		this.getContent=function(){return this.content;}
+	}
+	
+	var arr1=new Array();	
+	/*
+	$(function(){
+		$("#p21_content").width(window.innerWidth-40);
+		$("#p21_content").height(window.innerHeight);
+		$("#page21").bind("pageshow", showP21);
+	});
+	
+	function showP21(){
+		$("#p21_content").empty();	
+		$("#p21_header").empty();	
+		var p21_content=document.getElementById("p21_content");
+		var p21_id=arr1[getQueryString("id")];
+    	var c1=p21_id.getContent();
+		var t1=p21_id.getTitle();
+		$("#p21_content").append(c1);
+		$("#p21_header").append(t1) ;
+	}
+	*/
+	
+	function init(){
+		$.ajax({
+			url: "http://womany.net/api/win8/hot_articles",
+			type: "GET",
+			dataType: "json",
+			
+			success: function(Jdata) {
+				var list=$("#p2_dataList");		  
+				list.empty(); 
+				for(var i=0; i<Jdata.length; i++){					
+					var d=new Data(Jdata[i].title, Jdata[i].description, Jdata[i].content); 
+                	arr1.push(d);
+					list.append('<li><a href="#"><h3>' + arr1[i].title + 
+                            "</h3><p>" + arr1[i].description +
+                            "</p> </a> <a href='#page21&id=" + i + "'>詳細 </a></li>");
+				}		  
+				list.listview("refresh");			
+			},
+	
+			error: function() {
+				alert("ERROR+json!");
+			}
+		});
+	}
+	
+	function getQueryString(paramName){ 
+	　　paramName = paramName .replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]").toLowerCase();
+	　　var reg = "[\\?&]"+paramName +"=([^&#]*)"; 
+	　　var regex = new RegExp( reg ); 
+	　　var regResults = regex.exec( window.location.href.toLowerCase() ); 
+	　　if( regResults == null )    return ""; 
+	　　else    return regResults [1];
+	}	
+</script>
+
 </head> 
-<body> 
+<body onLoad="init()"> 
 
 <div data-role="page" id="page">
 	<div data-role="header">
@@ -41,17 +108,6 @@
             </li>
 		</ul>
 	</div>
-	<div data-role="footer">
-		<h4>頁尾</h4>
-	</div>
-</div>
-
-<div data-role="page" id="page21" data-add-back-btn="true">
-	<div data-role="header">
-		<h1 id="p21_header">第二頁之一</h1>
-	</div>
-	<div data-role="content">   
-    	<div id="p21_content"></div> 
 	<div data-role="footer">
 		<h4>頁尾</h4>
 	</div>
