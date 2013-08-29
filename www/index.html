@@ -60,13 +60,6 @@
     }
 
     // A button will call this function
-    function capturePhotoEdit() {
-      // Take picture using device camera, allow edit, and retrieve image as base64-encoded string
-      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true,
-        destinationType: destinationType.DATA_URL });
-    }
-
-    // A button will call this function
     function getPhoto(source) {
       // Retrieve image file location from specified source
       navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
@@ -256,13 +249,13 @@ html, body { width: 100%; height: 100%; margin: 0px; }
 	</div>
 </div>
 
-<div data-role="page" id="page4" data-add-back-btn="true">
+<div data-role="page" id="page4">
 	<div data-role="header">
+    	<a href="#page" data-icon="star">test返回</a>
 		<h1>第四頁</h1>
 	</div>
 	<div data-role="content">	
-		<button onclick="capturePhoto();">Capture Photo</button> <br>
-    	<button onclick="capturePhotoEdit();">Capture Editable Photo</button> <br>
+		<button onclick="capturePhoto();" data-icon="plus">Capture Photo</button> <br>
     	<button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
     	<button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>
     	<img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
