@@ -16,15 +16,18 @@
         Jane
     </author>
     
-    <!-- Camera -->
+    <!-- fb connect-->
+	<gap:plugin name="com.phonegap.plugins.facebookconnect">
+		<param name="APP_ID" value="553642721338198" /> <!-- FB App ID-->
+		<param name="APP_NAME" value="TestNO" /> <!-- FB App Namespace-->
+	</gap:plugin>
+	
+	<!-- Camera -->
     <plugin name="Camera" value="org.apache.cordova.CameraLauncher" />
     <plugin name="Camera" value="CDVCamera" />
     <feature name="http://tizen.org/api/application" required="true"/>
     <feature name="http://tizen.org/api/application.launch" required="true"/>
     <feature id="blackberry.media.camera" />
-    <!-- <rim:permissions> -->
-        <!-- <rim:permit>use_camera</rim:permit> -->
-    <!-- </rim:permissions> -->
 
     <!-- Notification -->
     <plugin name="Notification" value="org.apache.cordova.Notification"/>
