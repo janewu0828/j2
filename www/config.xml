@@ -16,14 +16,14 @@
         Jane
     </author>
 
-   <!-- Connection 3.0.0 -->
+    <!-- Connection 3.0.0 -->
     <feature name="NetworkStatus">
-    <param name="android-package" value="org.apache.cordova.NetworkManager" />
-</feature>
-<feature name="NetworkStatus">
-    <param name="ios-package" value="CDVConnection" />
-</feature>
-<feature name="http://tizen.org/api/systeminfo" required="true"/>
+        <param name="android-package" value="org.apache.cordova.NetworkManager" />
+    </feature>
+    <feature name="NetworkStatus">
+        <param name="ios-package" value="CDVConnection" />
+    </feature>
+    <feature name="http://tizen.org/api/systeminfo" required="true"/>
         
     <!-- fb connect-->
 	<gap:plugin name="com.phonegap.plugins.facebookconnect">
@@ -33,13 +33,13 @@
 	
 	<!-- Camera 3.0.0-->
     <feature name="Camera">
-    <param name="android-package" value="org.apache.cordova.CameraLauncher" />
-</feature>
-<feature name="Camera">
-    <param name="ios-package" value="CDVCamera" />
-</feature>
-<feature name="http://tizen.org/api/application" required="true"/>
-<feature name="http://tizen.org/api/application.launch" required="true"/>
+        <param name="android-package" value="org.apache.cordova.CameraLauncher" />
+    </feature>
+    <feature name="Camera">
+        <param name="ios-package" value="CDVCamera" />
+    </feature>
+    <feature name="http://tizen.org/api/application" required="true"/>
+    <feature name="http://tizen.org/api/application.launch" required="true"/>
 
     <!-- Notification -->
     <plugin name="Notification" value="org.apache.cordova.Notification"/>
@@ -140,5 +140,4 @@
         <access origin="http://phonegap.com" subdomains="true" />  - same as above, but including subdomains, such as http://build.phonegap.com/
         <access origin="http://phonegap.com" browserOnly="true" /> - only allows http://phonegap.com to be opened by the child browser.
     -->
-
 </widget>
