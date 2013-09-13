@@ -132,6 +132,11 @@
         sourceType: source });
     }
 
+    // Called if something bad happens.
+    function onFail(message) {
+      alert('Failed because: ' + message);
+    }
+
 
     // compass-onSuccess: Get the current heading
     function onSuccess(heading) {
@@ -194,11 +199,6 @@
             ['Ok','Exit'],             // buttonLabels
             'Jane Doe'                 // defaultText
         );
-    }
-	
-	// Called if something bad happens.
-    function onFail(message) {
-      alert('Failed because: ' + message);
     }
 </script>
 
