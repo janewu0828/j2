@@ -16,6 +16,17 @@
         Jane
     </author>
 
+    <!-- InAppBrowser -->
+    <feature name="InAppBrowser">
+        <param name="android-package" value="org.apache.cordova.InAppBrowser" />
+    </feature>
+    <feature name="InAppBrowser">
+        <param name="ios-package" value="CDVInAppBrowser" />
+    </feature>
+    <feature name="InAppBrowser">
+        <param name="ios-package" value="CDVInAppBrowser" />
+    </feature>
+
     <!-- File 3.0.0-->
     <feature name="File">
         <param name="android-package" value="org.apache.cordova.FileUtils" />
