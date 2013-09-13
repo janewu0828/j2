@@ -15,6 +15,17 @@
     <author href="http://phonegap.com" email="support@phonegap.com">
         Jane
     </author>
+
+    <!-- compass -->
+    <feature name="Compass">
+    <param name="android-package" value="org.apache.cordova.CompassListener" />
+</feature>
+<feature name="Compass">
+    <param name="ios-package" value="CDVLocation" />
+</feature>
+<Capabilities>
+    <Capability Name="ID_CAP_SENSORS" />
+</Capabilities>
     
     <!-- fb connect-->
 	<gap:plugin name="com.phonegap.plugins.facebookconnect">
