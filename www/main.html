@@ -41,11 +41,11 @@
 		FB.getLoginStatus(function(response) {
 			var status=null;
 			if (response.status == 'connected') {
- 				alert('logged in');
+ 				// alert('logged in');
  				status='logged in';
  				return status;
 			} else {
-                alert('not logged in');
+                // alert('not logged in');
                 status='not logged in';
  				return status;
             }
@@ -77,10 +77,11 @@
 		if (loginStatus=='logged in'){
 			$("#btn_loginOut").empty();
 			// loginOut.text='logout';
-			$("#btn_loginOut").append('logout') ;
+			$("#btn_loginOut").append('login') ;
 			logout();
 		} else {
 			login();
+			$("#btn_loginOut").append('logout') ;
 		}
 		alert('end loginOut');
 	}
