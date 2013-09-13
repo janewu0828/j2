@@ -94,19 +94,29 @@
     	// Connection
         checkConnection();
 
-   //  	// InAppBrowser
- 		// var ref = window.open('http://apache.org', '_blank', 'location=yes');
-   //      ref.addEventListener('loadstart', function(event) { alert('start: ' + event.url); });
-   //      ref.addEventListener('loadstop', function(event) { alert('stop: ' + event.url); });
-   //      ref.addEventListener('loaderror', function(event) { alert('error: ' + event.message); });
-   //      ref.addEventListener('exit', function(event) { alert(event.type); });
+     	// // InAppBrowser
+        // var ref  = window.open('http://apache.org', '_blank', 'location=yes');
+        // ref.addEventListener('loadstart', function(event) { alert('start: ' + event.url); });
+        // ref.addEventListener('loadstop', function(event) { alert('stop: ' + event.url); });
+        // ref.addEventListener('loaderror', function(event) { alert('error: ' + event.message); });
+        // ref.addEventListener('exit', function(event) { alert(event.type); });
 
-        // removeEventListener
-        iabRef = window.open('http://apache.org', '_blank', 'location=yes');
-        iabRef.addEventListener('loadstart', iabLoadStart);
-        iabRef.addEventListener('loadstop', iabLoadStop);
-        iabRef.removeEventListener('loaderror', iabLoadError);
-        iabRef.addEventListener('exit', iabClose);
+        // // removeEventListener
+        // iabRef = window.open('http://apache.org', '_blank', 'location=yes');
+        // iabRef.addEventListener('loadstart', iabLoadStart);
+        // iabRef.addEventListener('loadstop', iabLoadStop);
+        // iabRef.removeEventListener('loaderror', iabLoadError);
+        // iabRef.addEventListener('exit', iabClose);
+
+        //InAppBrowser-show
+        var ref = window.open('http://apache.org', '_blank', 'hidden=yes');
+        ref.addEventListener('loadstop', function(event) {
+            alert('background window loaded'); 
+        });
+        // close InAppBrowser after 5 seconds
+        setTimeout(function() {
+            ref.close();
+        }, 5000);
 
     	// Register the event listener
         document.addEventListener("menubutton", onMenuKeyDown, false);
