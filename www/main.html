@@ -103,7 +103,7 @@
 
     // Handle the menu button
     function onMenuKeyDown() {
-    	showAlert('menu');
+    	showAlert("menu-test");
     }
     // Show a custom alertDismissed
     function showAlert(message) {
@@ -182,15 +182,15 @@
 		alert('callback + alertDismissed');
 	}
 
-    // Show a custom alertDismissed
-    function showAlert() {
-        navigator.notification.alert(
-            'showAlert!',			// message
-            alertDismissed,			// callback
-            'title',				// title
-            'button'				// buttonName
-        );
-    }
+    // // Show a custom alertDismissed
+    // function showAlert() {
+    //     navigator.notification.alert(
+    //         'showAlert!',			// message
+    //         alertDismissed,			// callback
+    //         'title',				// title
+    //         'button'				// buttonName
+    //     );
+    // }
 	
 	// Beep three times
     function playBeep() {
