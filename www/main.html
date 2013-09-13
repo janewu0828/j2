@@ -78,6 +78,9 @@
 			$("#btn_loginOut").empty();
 			// loginOut.text='logout';
 			$("#btn_loginOut").append('logout') ;
+			logout();
+		} else {
+			login();
 		}
 		alert('end loginOut');
 	}
@@ -315,7 +318,8 @@ html, body { width: 100%; height: 100%; margin: 0px; }
 <div data-role="page" id="page">
 	<div data-role="header">
 		<h1>第一頁</h1>
-		<button data-icon="check" onclick="loginOut()" id="btn_loginOut">test-Login</button>
+		<a href="#" data-icon="check" onclick="loginOut()" id="btn_loginOut">test-Login</a>
+		<!-- <button data-icon="check" onclick="loginOut()" id="btn_loginOut">test-Login</button> -->
        
         <!-- fb connect -->
         <div id="data">loading ...</div>
