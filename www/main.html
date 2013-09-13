@@ -94,35 +94,6 @@
     	// Connection
         checkConnection();
 
-     	// // InAppBrowser
-        // var ref  = window.open('http://apache.org', '_blank', 'location=yes');
-        // ref.addEventListener('loadstart', function(event) { alert('start: ' + event.url); });
-        // ref.addEventListener('loadstop', function(event) { alert('stop: ' + event.url); });
-        // ref.addEventListener('loaderror', function(event) { alert('error: ' + event.message); });
-        // ref.addEventListener('exit', function(event) { alert(event.type); });
-
-        // // removeEventListener
-        // iabRef = window.open('http://apache.org', '_blank', 'location=yes');
-        // iabRef.addEventListener('loadstart', iabLoadStart);
-        // iabRef.addEventListener('loadstop', iabLoadStop);
-        // iabRef.removeEventListener('loaderror', iabLoadError);
-        // iabRef.addEventListener('exit', iabClose);
-
-        // // InAppBrowser-show
-        // var ref = window.open('http://apache.org', '_blank', 'hidden=yes');
-        // ref.addEventListener('loadstop', function(event) {
-        //     alert('background window loaded'); 
-        // });
-        // // close InAppBrowser after 5 seconds
-        // setTimeout(function() {
-        //     ref.close();
-        // }, 5000);
-
-		// InAppBrowser-insertCSS
-		iabRef = window.open('http://apache.org', '_blank', 'location=yes');
-         iabRef.addEventListener('loadstop', changeBackgroundColor);
-         iabRef.addEventListener('exit', iabClose);
-
     	// Register the event listener
         document.addEventListener("menubutton", onMenuKeyDown, false);
 
@@ -131,37 +102,6 @@
         destinationType=navigator.camera.DestinationType;
 
         alert('device-ready');
-    }
-
-    // Inject our custom CSS into the InAppBrowser window
-    function changeBackgroundColor() {
-        iabRef.insertCSS({
-            code: "body { background: #ffff00"
-        }, function() {
-            alert("Styles Altered");
-        }
-    }
-
-    // Global InAppBrowser reference
-    function iabLoadStart(event) {
-        alert(event.type + ' - ' + event.url);
-    }
-
-    function iabLoadStop(event) {
-        alert(event.type + ' - ' + event.url);
-    }
-
-    function iabLoadError(event) {
-        alert(event.type + ' - ' + event.message);
-    }
-
-    function iabClose(event) {
-         alert(event.type);
-         iabRef.removeEventListener('loadstop', changeBackgroundColor);
-         iabRef.removeEventListener('loadstart', iabLoadStart);
-         iabRef.removeEventListener('loadstop', iabLoadStop);
-         iabRef.removeEventListener('loaderror', iabLoadError);
-         iabRef.removeEventListener('exit', iabClose);
     }
 
     // Handle the menu button
