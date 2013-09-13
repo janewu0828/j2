@@ -16,6 +16,23 @@
         Jane
     </author>
 
+    <!-- File 3.0.0-->
+    <feature name="File">
+        <param name="android-package" value="org.apache.cordova.FileUtils" />
+    </feature>
+    <feature name="FileTransfer">
+        <param name="android-package" value="org.apache.cordova.FileTransfer" />
+    </feature>
+    <feature id="blackberry.io.file" required="true" version="1.0.0.0" />
+    <feature id="blackberry.utils"   required="true" version="1.0.0.0" />
+    <feature id="blackberry.io.dir"  required="true" version="1.0.0.0" />
+    <feature name="File">
+        <param name="ios-package" value="CDVFile" />
+    </feature>
+    <feature name="FileTransfer">
+        <param name="ios-package" value="CDVFileTransfer" />
+    </feature>
+
     <!-- Capture-3.0.0 -->
     <feature id="blackberry.system"  required="true" version="1.0.0.0" />
     <feature id="blackberry.io.file" required="true" version="1.0.0.0" />
