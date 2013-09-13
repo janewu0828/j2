@@ -315,15 +315,16 @@ html, body { width: 100%; height: 100%; margin: 0px; }
 <div data-role="page" id="page">
 	<div data-role="header">
 		<h1>第一頁</h1>
-		<!-- <a href="#" data-icon="check" onclick="loginOut" id="loginOut">test-Login</a> -->
+		<a href="#" data-icon="check" onclick="login()" id="login">test-Login</a>
         
         <!-- fb connect -->
         <div id="data">loading ...</div>
         <div id="log"></div>   
-		<button onclick="login()">Login</button>
+		<button data-icon="check" onclick="login()">Login</button>
 		<button onclick="getLoginStatus()">Get login</button>
 		<button onclick="logout()">Logout</button> 
-		<button data-icon="check" onclick="loginOut" id="loginOut">test-Login</button>
+
+		<button data-icon="check" onclick="loginOut()" id="btn_loginOut">test-Login</button>
 	</div>
 	<div data-role="content">	
 		<ul data-role="listview">
