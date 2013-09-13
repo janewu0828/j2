@@ -108,15 +108,20 @@
         // iabRef.removeEventListener('loaderror', iabLoadError);
         // iabRef.addEventListener('exit', iabClose);
 
-        //InAppBrowser-show
-        var ref = window.open('http://apache.org', '_blank', 'hidden=yes');
-        ref.addEventListener('loadstop', function(event) {
-            alert('background window loaded'); 
-        });
-        // close InAppBrowser after 5 seconds
-        setTimeout(function() {
-            ref.close();
-        }, 5000);
+        // // InAppBrowser-show
+        // var ref = window.open('http://apache.org', '_blank', 'hidden=yes');
+        // ref.addEventListener('loadstop', function(event) {
+        //     alert('background window loaded'); 
+        // });
+        // // close InAppBrowser after 5 seconds
+        // setTimeout(function() {
+        //     ref.close();
+        // }, 5000);
+
+		// InAppBrowser-insertCSS
+		iabRef = window.open('http://apache.org', '_blank', 'location=yes');
+         iabRef.addEventListener('loadstop', changeBackgroundColor);
+         iabRef.addEventListener('exit', iabClose);
 
     	// Register the event listener
         document.addEventListener("menubutton", onMenuKeyDown, false);
@@ -126,6 +131,15 @@
         destinationType=navigator.camera.DestinationType;
 
         alert('device-ready');
+    }
+
+    // Inject our custom CSS into the InAppBrowser window
+    function changeBackgroundColor() {
+        iabRef.insertCSS({
+            code: "body { background: #ffff00"
+        }, function() {
+            alert("Styles Altered");
+        }
     }
 
     // Global InAppBrowser reference
@@ -143,6 +157,7 @@
 
     function iabClose(event) {
          alert(event.type);
+         iabRef.removeEventListener('loadstop', changeBackgroundColor);
          iabRef.removeEventListener('loadstart', iabLoadStart);
          iabRef.removeEventListener('loadstop', iabLoadStop);
          iabRef.removeEventListener('loaderror', iabLoadError);
