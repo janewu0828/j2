@@ -16,11 +16,11 @@
         Jane
     </author>
 
-    <!-- connection -->
+    <!-- Connection -->
     <plugin name="NetworkStatus" value="org.apache.cordova.NetworkManager" />
     <plugin name="NetworkStatus" value="CDVConnection" />
 
-    <!-- compass -->
+    <!-- Compass -->
     <feature name="Compass">
     <param name="android-package" value="org.apache.cordova.CompassListener" />
 </feature>
