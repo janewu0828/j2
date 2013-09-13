@@ -88,6 +88,9 @@
 
     // device APIs are available
     function onDeviceReady() {
+    	// Register the event listener
+        document.addEventListener("menubutton", onMenuKeyDown, false);
+
         // Connection
         checkConnection();
 
@@ -96,6 +99,20 @@
         destinationType=navigator.camera.DestinationType;
 
         alert('device-ready');
+    }
+
+    // Handle the menu button
+    function onMenuKeyDown() {
+    	<p><a href="#" onclick="showAlert('menu')">Show Alert</a></p>
+    }
+    // Show a custom alertDismissed
+    function showAlert(message) {
+        navigator.notification.alert(
+            message,			// message
+            alertDismissed,			// callback
+            'title',				// title
+            'button'				// buttonName
+        );
     }
 
     // Connection
