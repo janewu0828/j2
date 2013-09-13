@@ -20,17 +20,7 @@
     <plugin name="NetworkStatus" value="org.apache.cordova.NetworkManager" />
     <plugin name="NetworkStatus" value="CDVConnection" />
 
-    <!-- Compass -->
-    <feature name="Compass">
-    <param name="android-package" value="org.apache.cordova.CompassListener" />
-</feature>
-<feature name="Compass">
-    <param name="ios-package" value="CDVLocation" />
-</feature>
-<Capabilities>
-    <Capability Name="ID_CAP_SENSORS" />
-</Capabilities>
-    
+        
     <!-- fb connect-->
 	<gap:plugin name="com.phonegap.plugins.facebookconnect">
 		<param name="APP_ID" value="553642721338198" /> <!-- FB App ID-->
