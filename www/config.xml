@@ -16,14 +16,14 @@
         Jane
     </author>
 
-   <!--  <!-- Connection 3.0.0
+   <!-- Connection 3.0.0 -->
     <feature name="NetworkStatus">
     <param name="android-package" value="org.apache.cordova.NetworkManager" />
 </feature>
 <feature name="NetworkStatus">
     <param name="ios-package" value="CDVConnection" />
 </feature>
-<feature name="http://tizen.org/api/systeminfo" required="true"/> -->
+<feature name="http://tizen.org/api/systeminfo" required="true"/>
         
     <!-- fb connect-->
 	<gap:plugin name="com.phonegap.plugins.facebookconnect">
