@@ -75,12 +75,12 @@
 	function loginOut() {
 		var loginStatus=getLoginStatus();
 		if (loginStatus=='logged in'){
-			logout();
 			$("#btn_loginOut").empty();
-			$("#btn_loginOut").text('login') ;		
+			$("#btn_loginOut").text('loginout') ;	
+			logout();	
 		} else {
+			$("#btn_loginOut").text('logoin') ;
 			login();
-			$("#btn_loginOut").text('logout') ;
 		}
 		alert('end loginOut');
 	}
@@ -316,7 +316,7 @@ html, body { width: 100%; height: 100%; margin: 0px; }
 <div data-role="page" id="page">
 	<div data-role="header">
 		<h1>第一頁</h1>
-		<a href="#" data-icon="check" onclick="loginOut()" id="btn_loginOut">test-Login</a>
+		<a href="#" data-icon="check" onclick="loginOut()" id="btn_loginOut" class="ui-btn-right">test-Login</a>
 		<!-- <button data-icon="check" onclick="loginOut()" id="btn_loginOut">test-Login</button> -->
        
         <!-- fb connect -->
