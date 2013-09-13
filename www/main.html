@@ -74,8 +74,8 @@
     
 	function loginOut() {
 		var loginStatus=getLoginStatus();
+		alert('getlogin'+loginStatus);
 		if (loginStatus=='logged in'){
-			$("#btn_loginOut").empty();
 			$("#btn_loginOut").text('loginout') ;	
 			logout();	
 		} else {
