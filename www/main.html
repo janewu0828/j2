@@ -75,13 +75,12 @@
 	function loginOut() {
 		var loginStatus=getLoginStatus();
 		if (loginStatus=='logged in'){
-			$("#btn_loginOut").empty();
-			// loginOut.text='logout';
-			$("#btn_loginOut").append('login') ;
 			logout();
+			$("#btn_loginOut").empty();
+			$("#btn_loginOut").text('login') ;		
 		} else {
 			login();
-			$("#btn_loginOut").append('logout') ;
+			$("#btn_loginOut").text('logout') ;
 		}
 		alert('end loginOut');
 	}
@@ -119,8 +118,6 @@
         // camera.getPicture
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
-
-        alert('device-ready');
     }
 
     // Handle the menu button
