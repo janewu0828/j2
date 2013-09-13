@@ -82,12 +82,18 @@
 	// camera.getPicture
     var pictureSource;   // picture source
     var destinationType; // sets the format of returned value
+
+    // removeEventListener
+    var iabRef = null;
 	
     // Wait for device API libraries to load
     document.addEventListener("deviceready", onDeviceReady, false);
 
     // device APIs are available
     function onDeviceReady() {
+    	// Connection
+        checkConnection();
+
     	// InAppBrowser
  		var ref = window.open('http://apache.org', '_blank', 'location=yes');
         ref.addEventListener('loadstart', function(event) { alert('start: ' + event.url); });
@@ -95,17 +101,42 @@
         ref.addEventListener('loaderror', function(event) { alert('error: ' + event.message); });
         ref.addEventListener('exit', function(event) { alert(event.type); });
 
+        // removeEventListener
+        iabRef = window.open('http://apache.org', '_blank', 'location=yes');
+        iabRef.addEventListener('loadstart', iabLoadStart);
+        iabRef.addEventListener('loadstop', iabLoadStop);
+        iabRef.removeEventListener('loaderror', iabLoadError);
+        iabRef.addEventListener('exit', iabClose);
+
     	// Register the event listener
         document.addEventListener("menubutton", onMenuKeyDown, false);
-
-        // Connection
-        checkConnection();
 
         // camera.getPicture
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
 
         alert('device-ready');
+    }
+
+    // Global InAppBrowser reference
+    function iabLoadStart(event) {
+        alert(event.type + ' - ' + event.url);
+    }
+
+    function iabLoadStop(event) {
+        alert(event.type + ' - ' + event.url);
+    }
+
+    function iabLoadError(event) {
+        alert(event.type + ' - ' + event.message);
+    }
+
+    function iabClose(event) {
+         alert(event.type);
+         iabRef.removeEventListener('loadstart', iabLoadStart);
+         iabRef.removeEventListener('loadstop', iabLoadStop);
+         iabRef.removeEventListener('loaderror', iabLoadError);
+         iabRef.removeEventListener('exit', iabClose);
     }
 
     // Handle the menu button
