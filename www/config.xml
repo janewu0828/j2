@@ -16,7 +16,14 @@
         Jane
     </author>
 
-    <!-- Connection 3.0.0 -->
+    <!-- Capture-3.0.0 -->
+    <feature id="blackberry.system"  required="true" version="1.0.0.0" />
+    <feature id="blackberry.io.file" required="true" version="1.0.0.0" />
+    <feature name="Capture">
+        <param name="ios-package" value="CDVCapture" />
+    </feature>
+
+    <!-- Connection-3.0.0 -->
     <feature name="NetworkStatus">
         <param name="android-package" value="org.apache.cordova.NetworkManager" />
     </feature>
@@ -38,6 +45,7 @@
     <feature name="Camera">
         <param name="ios-package" value="CDVCamera" />
     </feature>
+    <feature id="blackberry.media.camera" />
     <feature name="http://tizen.org/api/application" required="true"/>
     <feature name="http://tizen.org/api/application.launch" required="true"/>
 
