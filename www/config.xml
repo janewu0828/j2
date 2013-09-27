@@ -15,6 +15,8 @@
     <author href="http://phonegap.com" email="support@phonegap.com">
         Jane
     </author>
+    <!-- Update App plugin -->
+    <gap:plugin name="org.common.plugins.updateapp" />
 
     <!-- File 3.0.0-->
     <feature name="File">
