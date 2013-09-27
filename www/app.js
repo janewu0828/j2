@@ -1,4 +1,4 @@
-var initOptions = { updateSite : 'http://xxxx.com/mobile', };
+var initOptions = { updateSite : 'https://ancient-retreat-1596.herokuapp.com/mobile', };
 
 document.addEventListener("deviceready", onDeviceReady, false);
 
