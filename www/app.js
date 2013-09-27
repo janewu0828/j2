@@ -2,27 +2,46 @@ var initOptions = { updateSite : 'https://ancient-retreat-1596.herokuapp.com/mob
 
 document.addEventListener("deviceready", onDeviceReady, false);
 
-function onDeviceReady() { $(document).ready( function() { if (checkConnection() != Connection.NONE ) { initOptions.updateSite = initOptions.updateSite +'/'+ device.platform; checkUpdate(); } }); }
+function onDeviceReady() { 
+    alert("app.js-nDeviceReady")
+    $(document).ready( function() { 
+        if (checkConnection() != Connection.NONE ) { 
+            initOptions.updateSite = initOptions.updateSite +'/'+ device.platform; checkUpdate();
 
-function checkConnection() { var networkState = navigator.connection.type;
+        } }); }
 
-var states = {};
-states[Connection.UNKNOWN]  = 'Unknown connection';
-states[Connection.ETHERNET] = 'Ethernet connection';
-states[Connection.WIFI]     = 'WiFi connection';
-states[Connection.CELL_2G]  = 'Cell 2G connection';
-states[Connection.CELL_3G]  = 'Cell 3G connection';
-states[Connection.CELL_4G]  = 'Cell 4G connection';
-states[Connection.CELL]     = 'Cell generic connection';
-states[Connection.NONE]     = 'No network connection';
+function checkConnection() { 
+    var networkState = navigator.connection.type;
+    var states = {};
+    states[Connection.UNKNOWN]  = 'Unknown connection';
+    states[Connection.ETHERNET] = 'Ethernet connection';
+    states[Connection.WIFI]     = 'WiFi connection';
+    states[Connection.CELL_2G]  = 'Cell 2G connection';
+    states[Connection.CELL_3G]  = 'Cell 3G connection';
+    states[Connection.CELL_4G]  = 'Cell 4G connection';
+    states[Connection.CELL]     = 'Cell generic connection';
+    states[Connection.NONE]     = 'No network connection';
 
-//alert('Connection type: ' + states[networkState]);
+alert('Connection type: ' + states[networkState]);
 return networkState;
 }
 
 var version = { v_online: '', v_local: '', v_description: '', v_apk: '' };
 
-function getUpdatable(url,key) { var dtd = $.Deferred(); if (workingStatus.isConnected) { $.mobile.loading( 'show', { theme: "b", text: '检查最新版本信息...', textonly: true, textVisible: true}); $.get(url) .done( function(xml) { alert('ret['+ url +']:'+ allPrpos(xml) ); if (xml.xmlVersion == '1.0' ) { version.v_online = $(xml).find(key).text(); alert('online: '+ version.v_online ); version.v_apk = $(xml).find("apk").text(); version.v_description = $(xml).find("description").text(); //获取本机版本 version.v_local = window.localStorage.getItem(key); if ( version.v_local == null ) { version.v_local = '0.0.1'; }
+function getUpdatable(url,key) { 
+var dtd = $.Deferred(); 
+if (workingStatus.isConnected) { 
+$.mobile.loading( 'show', { theme: "b", text: '检查最新版本信息...', textonly: true, textVisible: true}); 
+$.get(url) .done( function(xml) { alert('ret['+ url +']:'+ allPrpos(xml) ); 
+if (xml.xmlVersion == '1.0' ) { 
+    version.v_online = $(xml).find(key).text(); 
+    alert('online: '+ version.v_online ); 
+    version.v_apk = $(xml).find("apk").text(); 
+    version.v_description = $(xml).find("description").text(); //获取本机版本 
+    version.v_local = window.localStorage.getItem(key); 
+    if ( version.v_local == null ) { 
+        version.v_local = '0.0.1'; 
+    }
 
                 //比较版本异同
                 if ( version.v_local != version.v_online ) {
@@ -49,15 +68,36 @@ function getUpdatable(url,key) { var dtd = $.Deferred(); if (workingStatus.isCon
 return dtd.promise();
 }
 
-function checkUpdate() { $.when(getUpdatable(initOptions.updateSite +'/update.xml?'+(new Date()).valueOf(),'version')) .done( function () { alert('update Version!'); updateVersion(); } ) .fail( function () { alert("don't update!"); } ) //.always( function () { alert("always to login.html!");} ) }
+function checkUpdate() { 
+$.when(getUpdatable(initOptions.updateSite +'/update.xml?'+(new Date()).valueOf(),'version')) .done( function () { alert('update Version!'); 
+updateVersion(); } ) .fail( function () { alert("don't update!"); 
+} ) //.always( function () { alert("always to login.html!");} ) }
 
-function reqRoot() { var dtd = $.Deferred(); window.requestFileSystem( LocalFileSystem.PERSISTENT, 0, function(fileSystem) { //alert('fs over!'); dtd.resolve(fileSystem.root); }, function(evt) { console.log('reqRoot:' +evt.target.error.code); alert('reqRoot:' +evt.target.error.code); dtd.reject(); } ); return dtd.promise(); }
+function reqRoot() { 
+var dtd = $.Deferred(); 
+window.requestFileSystem( LocalFileSystem.PERSISTENT, 0, function(fileSystem) { 
+//alert('fs over!'); 
+dtd.resolve(fileSystem.root); }, function(evt) { 
+    console.log('reqRoot:' +evt.target.error.code); 
+    alert('reqRoot:' +evt.target.error.code); 
+    dtd.reject(); } ); 
+return dtd.promise(); }
 
-function mkDir( entrydir, dir ) { var dtd = $.Deferred(); entrydir.getDirectory( dir, {create:true,exclusive:false}, function(currentdir) { //alert('mkDir('+ dir+ ') over'); dtd.resolve(currentdir); }, function(evt) { console.log( 'mkDir('+ dir+ '):' + evt.target.error.code); dtd.reject(); } ); return dtd.promise(); }
+function mkDir( entrydir, dir ) { 
+var dtd = $.Deferred(); 
+entrydir.getDirectory( dir, {create:true,exclusive:false}, function(currentdir) { 
+//alert('mkDir('+ dir+ ') over'); 
+dtd.resolve(currentdir); }, function(evt) { 
+    console.log( 'mkDir('+ dir+ '):' + evt.target.error.code); dtd.reject(); } ); return dtd.promise(); }
 
-function createFile( entrydir, fname ) { var dtd = $.Deferred(); entrydir.getFile( fname, {create:true,exclusive:false}, function(parent) { //alert('createFile('+ fname+ ') over'); dtd.resolve(parent, fname); }, function(evt) { console.log( 'createFile('+ fname+ '):' + evt.target.error.code); dtd.reject(); } ); return dtd.promise(); }
+function createFile( entrydir, fname ) { var dtd = $.Deferred(); entrydir.getFile( fname, {create:true,exclusive:false}, function(parent) { alert('createFile('+ fname+ ') over'); dtd.resolve(parent, fname); }, function(evt) { console.log( 'createFile('+ fname+ '):' + evt.target.error.code); dtd.reject(); } ); return dtd.promise(); }
 
-function updateVersion() { $.mobile.loading( 'show', { theme: "b", text: '准备更新版本...', textonly: true, textVisible: true}); $.when(reqRoot()) .done( function (entrydir) { $.when(mkDir(entrydir, "dir1")) //下载目录一级 .done( function (entrydir2) { $.when(mkDir(entrydir2, "update")) //下载目录二级 .done( function (entrydir3) { $.when(createFile(entrydir3, version.v_apk )) .done( downloadApp ); //下载文件 }); }); }) .always( function () { setTimeout("$.mobile.loading('hide')",3000); }); }
+function updateVersion() { $.mobile.loading( 'show', { theme: "b", text: '准备更新版本...', textonly: true, textVisible: true}); $.when(reqRoot()) .done( function (entrydir) { $.when(mkDir(entrydir, "dir1")) 
+//下载目录一级 
+.done( function (entrydir2) { $.when(mkDir(entrydir2, "update")) 
+//下载目录二级 
+.done( function (entrydir3) { $.when(createFile(entrydir3, version.v_apk )) .done( downloadApp ); //下载文件
+ }); }); }) .always( function () { setTimeout("$.mobile.loading('hide')",3000); }); }
 
 function downloadApp(parent, fname) { alert("start download... "+ fname); var fileTransfer = new FileTransfer(); var uri = encodeURI(initOptions.updateSite +'/'+ fname);
 
