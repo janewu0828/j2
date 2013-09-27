@@ -111,18 +111,18 @@
     // Wait for device API libraries to load
     document.addEventListener("deviceready", onDeviceReady, false);
 
-    // device APIs are available
-    function onDeviceReady() {
-    	// Connection
-        checkConnection();
+    // // device APIs are available
+    // function onDeviceReady() {
+    // 	// Connection
+    //     checkConnection();
 
-    	// Register the event listener
-        document.addEventListener("menubutton", onMenuKeyDown, false);
+    // 	// Register the event listener
+    //     document.addEventListener("menubutton", onMenuKeyDown, false);
 
         // camera.getPicture
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
-    }
+    // }
 
     // Handle the menu button
     function onMenuKeyDown() {
